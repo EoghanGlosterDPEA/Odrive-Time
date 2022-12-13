@@ -1,0 +1,98 @@
+<MainScreen>:
+
+    name: 'main'
+    FloatLayout:
+        size_hint: None, None
+
+    DPEAButton:
+        id: right_button
+        text: '>'
+        font_size: self.width * .5
+        size_hint: .1, 1
+        pos_hint: {"x": .9, "y":0}
+        color: 0, 1, 0, 1
+        on_press: root.switch_to_traj()
+
+    DPEAButton:
+        id: left_button
+        text: "<"
+        font_size: self.width * .5
+        size_hint: .1, 1
+        pos_hint: {"x": 0, "y":0}
+        color: 1, 0, 0, 1
+        on_press: root.switch_to_gpio()
+
+
+    DPEAButton:
+        id: calibrating
+        text:'calibrate'
+        size: 100, 100
+        pos_hint: {"center_x": 0.2, "center_y":0.2}
+        color: 0, 1, 0,1
+        on_press: root.calibrateme()
+
+    DPEAButton:
+        id: spinalittle
+        text:'spin to the left'
+        size: 100, 100
+        pos_hint: {"center_x": 0.4, "center_y":0.5}
+        color: 0, 1, 0,1
+        on_press: root.spinalittle()
+
+    DPEAButton:
+        id: spinalittle1
+        text:'spin to the right'
+        size: 100, 100
+        pos_hint: {"center_x": 0.6, "center_y":0.5}
+        color: 0, 1, 0,1
+        on_press: root.spinalittle1()
+
+
+<TrajectoryScreen>:
+
+    name: 'main'
+    FloatLayout:
+        size_hint: None, None
+
+    Slider:
+        id: speedyslide
+        value: root.count
+        min: -100
+        max: 100
+        step: 1
+        orientation: 'horizontal'
+        sensitivity: 'handle'
+        on_value: root.sliderspeed(self.value)
+
+
+    DPEAButton:
+        id: test_button
+        text:'back'
+        size: 100, 100
+        pos_hint: {"center_x": 0.8, "center_y":0.8}
+        color: 0, 1, 1, 0
+        on_press: root.switch_screen()
+
+    DPEAButton:
+        id: dump
+        text:'error dump'
+        size: 100, 100
+        pos_hint: {"center_x": 0.3, "center_y":0.8}
+        color: 0, 1, 1, 0
+        on_press: root.dumperrors()
+
+
+
+<GPIOScreen>:
+
+    name: 'main'
+    FloatLayout:
+        size_hint: None, None
+
+    DPEAButton:
+        id: test_button
+        text:'back'
+        size: 100, 100
+        pos_hint: {"center_x": 0.5, "center_y":0.5}
+        color: 1, 0, 0, 1
+        on_press: root.switch_screen()
